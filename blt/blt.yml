@@ -1,2 +1,12 @@
 project:
+  prefix: (QED-TRA)
   machine_name: training1
+docroot: ${repo.root}/web
+command-hooks:
+  frontend-assets:
+    dir: '${repo.root}/web/themes/custom'
+    command: 'bash ./assets-build.sh'
+  post-config-import:
+    dir: '${docroot}'
+    command: "echo running the command now !;
+    blt custom:create-user admin admin;"

@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "acquia/blt": "*",
+        "acquia/blt": "^13.7",
         "composer/installers": "^2.0",
         "drupal/core-composer-scaffold": "^10.0",
         "drupal/core-project-message": "^10.0",
@@ -36,6 +36,11 @@
             "acquia/blt": true
         },
         "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Example\\": "blt/src/"
+        }
     },
     "extra": {
         "drupal-scaffold": {

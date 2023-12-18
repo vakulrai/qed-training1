@@ -109,6 +109,7 @@ class ComposerStaticInitfd04f8afab1b479925b53d6acefa6c70
         ),
         'E' => 
         array (
+            'Example\\' => 8,
             'Enlightn\\SecurityChecker\\' => 25,
             'Egulias\\EmailValidator\\' => 23,
         ),
@@ -365,6 +366,10 @@ class ComposerStaticInitfd04f8afab1b479925b53d6acefa6c70
         'Grasmash\\Expander\\' => 
         array (
             0 => __DIR__ . '/..' . '/grasmash/expander/src',
+        ),
+        'Example\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/blt/src',
         ),
         'Enlightn\\SecurityChecker\\' => 
         array (
