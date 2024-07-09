@@ -14,6 +14,7 @@ namespace Symfony\Component\DependencyInjection\Compiler;
 use Symfony\Component\DependencyInjection\Argument\BoundArgument;
 use Symfony\Component\DependencyInjection\Argument\ServiceLocatorArgument;
 use Symfony\Component\DependencyInjection\Argument\TaggedIteratorArgument;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\DependencyInjection\Attribute\Target;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -28,10 +29,15 @@ use Symfony\Component\VarExporter\ProxyHelper;
  */
 class ResolveBindingsPass extends AbstractRecursivePass
 {
+    protected bool $skipScalars = true;
+
     private array $usedBindings = [];
     private array $unusedBindings = [];
     private array $errorMessages = [];
 
+    /**
+     * @return void
+     */
     public function process(ContainerBuilder $container)
     {
         $this->usedBindings = $container->getRemovedBindingIds();
@@ -171,23 +177,40 @@ class ResolveBindingsPass extends AbstractRecursivePass
                 }
             }
 
+            $names = [];
+
             foreach ($reflectionMethod->getParameters() as $key => $parameter) {
+                $names[$key] = $parameter->name;
+
                 if (\array_key_exists($key, $arguments) && '' !== $arguments[$key]) {
+                    continue;
+                }
+                if (\array_key_exists($parameter->name, $arguments) && '' !== $arguments[$parameter->name]) {
+                    continue;
+                }
+                if (
+                    $value->isAutowired()
+                    && !$value->hasTag('container.ignore_attributes')
+                    && $parameter->getAttributes(Autowire::class, \ReflectionAttribute::IS_INSTANCEOF)
+                ) {
                     continue;
                 }
 
                 $typeHint = ltrim(ProxyHelper::exportType($parameter) ?? '', '?');
 
-                $name = Target::parseName($parameter);
+                $name = Target::parseName($parameter, parsedName: $parsedName);
 
-                if ($typeHint && \array_key_exists($k = preg_replace('/(^|[(|&])\\\\/', '\1', $typeHint).' $'.$name, $bindings)) {
+                if ($typeHint && (
+                    \array_key_exists($k = preg_replace('/(^|[(|&])\\\\/', '\1', $typeHint).' $'.$name, $bindings)
+                    || \array_key_exists($k = preg_replace('/(^|[(|&])\\\\/', '\1', $typeHint).' $'.$parsedName, $bindings)
+                )) {
                     $arguments[$key] = $this->getBindingValue($bindings[$k]);
 
                     continue;
                 }
 
-                if (\array_key_exists('$'.$name, $bindings)) {
-                    $arguments[$key] = $this->getBindingValue($bindings['$'.$name]);
+                if (\array_key_exists($k = '$'.$name, $bindings) || \array_key_exists($k = '$'.$parsedName, $bindings)) {
+                    $arguments[$key] = $this->getBindingValue($bindings[$k]);
 
                     continue;
                 }
@@ -198,15 +221,22 @@ class ResolveBindingsPass extends AbstractRecursivePass
                     continue;
                 }
 
-                if (isset($bindingNames[$name]) || isset($bindingNames[$parameter->name])) {
+                if (isset($bindingNames[$name]) || isset($bindingNames[$parsedName]) || isset($bindingNames[$parameter->name])) {
                     $bindingKey = array_search($binding, $bindings, true);
                     $argumentType = substr($bindingKey, 0, strpos($bindingKey, ' '));
                     $this->errorMessages[] = sprintf('Did you forget to add the type "%s" to argument "$%s" of method "%s::%s()"?', $argumentType, $parameter->name, $reflectionMethod->class, $reflectionMethod->name);
                 }
             }
 
+            foreach ($names as $key => $name) {
+                if (\array_key_exists($name, $arguments) && (0 === $key || \array_key_exists($key - 1, $arguments))) {
+                    $arguments[$key] = $arguments[$name];
+                    unset($arguments[$name]);
+                }
+            }
+
             if ($arguments !== $call[1]) {
-                ksort($arguments);
+                ksort($arguments, \SORT_NATURAL);
                 $calls[$i][1] = $arguments;
             }
         }

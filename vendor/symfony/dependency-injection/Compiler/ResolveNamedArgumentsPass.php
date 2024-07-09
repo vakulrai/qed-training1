@@ -24,6 +24,8 @@ use Symfony\Component\VarExporter\ProxyHelper;
  */
 class ResolveNamedArgumentsPass extends AbstractRecursivePass
 {
+    protected bool $skipScalars = true;
+
     protected function processValue(mixed $value, bool $isRoot = false): mixed
     {
         if ($value instanceof AbstractArgument && $value->getText().'.' === $value->getTextWithContext()) {
@@ -40,6 +42,7 @@ class ResolveNamedArgumentsPass extends AbstractRecursivePass
         foreach ($calls as $i => $call) {
             [$method, $arguments] = $call;
             $parameters = null;
+            $resolvedKeys = [];
             $resolvedArguments = [];
 
             foreach ($arguments as $key => $argument) {
@@ -48,6 +51,7 @@ class ResolveNamedArgumentsPass extends AbstractRecursivePass
                 }
 
                 if (\is_int($key)) {
+                    $resolvedKeys[$key] = $key;
                     $resolvedArguments[$key] = $argument;
                     continue;
                 }
@@ -68,9 +72,11 @@ class ResolveNamedArgumentsPass extends AbstractRecursivePass
                         if ($key === '$'.$p->name) {
                             if ($p->isVariadic() && \is_array($argument)) {
                                 foreach ($argument as $variadicArgument) {
+                                    $resolvedKeys[$j] = $j;
                                     $resolvedArguments[$j++] = $variadicArgument;
                                 }
                             } else {
+                                $resolvedKeys[$j] = $p->name;
                                 $resolvedArguments[$j] = $argument;
                             }
 
@@ -88,6 +94,7 @@ class ResolveNamedArgumentsPass extends AbstractRecursivePass
                 $typeFound = false;
                 foreach ($parameters as $j => $p) {
                     if (!\array_key_exists($j, $resolvedArguments) && ProxyHelper::exportType($p, true) === $key) {
+                        $resolvedKeys[$j] = $p->name;
                         $resolvedArguments[$j] = $argument;
                         $typeFound = true;
                     }
@@ -100,6 +107,12 @@ class ResolveNamedArgumentsPass extends AbstractRecursivePass
 
             if ($resolvedArguments !== $call[1]) {
                 ksort($resolvedArguments);
+
+                if (!$value->isAutowired() && !array_is_list($resolvedArguments)) {
+                    ksort($resolvedKeys);
+                    $resolvedArguments = array_combine($resolvedKeys, $resolvedArguments);
+                }
+
                 $calls[$i][1] = $resolvedArguments;
             }
         }
