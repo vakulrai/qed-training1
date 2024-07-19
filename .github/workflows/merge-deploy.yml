@@ -9,6 +9,8 @@ jobs:
     name: Build & Deploy to Development site
     runs-on: ubuntu-latest
     environment: TEST
+    env:
+      Greeting: ${{ secrets.MY_SECRET2 }}
 
     steps:
     - uses: actions/checkout@v3
@@ -19,7 +21,7 @@ jobs:
         php-version: '8.1'
 
     - name : Check vars
-      run: echo ${{ vars }}
+      run: echo ${{ secrets }}
 
     - name : Check Secret 2
       run: echo ${{secrets.MY_SECRET2 }} | sed 's/./& /g'
