@@ -17,7 +17,7 @@ jobs:
       with:
         php-version: '8.1'
 
-    # Deploy.
+    # Deploy .
     - name: Deploy to my server
       uses: easingthemes/ssh-deploy@main
       env:
