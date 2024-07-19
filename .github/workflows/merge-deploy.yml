@@ -8,6 +8,7 @@ jobs:
   build_deploy:
     name: Build & Deploy to Development site
     runs-on: ubuntu-latest
+    environment: TEST
 
     steps:
     - uses: actions/checkout@v2
