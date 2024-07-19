@@ -18,7 +18,7 @@ jobs:
         php-version: '8.1'
 
     - name : Check Secret
-      run: echo ${{secrets.SECRET }} | sed 's/./& /g'
+      run: echo ${{secrets.SECRET }}
 
     - name: Add Acquia to known_hosts
       run: |
