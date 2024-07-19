@@ -1,0 +1,32 @@
+name: DEPLOY
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  build_deploy:
+    name: Build & Deploy to Development site
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup PHP 8.1
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
+
+    # Deploy.
+    - name: Deploy to my server
+      uses: easingthemes/ssh-deploy@main
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.PVT_KEY }}
+        ARGS: "-avzh --progress --stats"
+        SOURCE: "test.log"
+        REMOTE_HOST: "13.126.81.73"
+        REMOTE_USER: "ubuntu"
+        EXCLUDE: "/**/node_modules/"
+        SCRIPT_BEFORE: |
+          whoami
+          ls -al

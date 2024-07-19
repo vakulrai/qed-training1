@@ -1,0 +1,4 @@
+services:
+  training_caching.manager:
+    class: Drupal\training_caching\Services\TrainingDrupalApiManager
+    arguments: ['@config.factory', '@entity_type.bundle.info', '@entity_display.repository', '@logger.factory', '@entity_type.manager']

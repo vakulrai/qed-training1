@@ -1,0 +1,5 @@
+name: Drupal caching demonstration
+type: module
+description: Exercises on Drupal caching concepts.
+core_version_requirement: ^9 || ^10
+package: Veolia Site
