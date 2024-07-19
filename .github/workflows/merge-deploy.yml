@@ -18,8 +18,8 @@ jobs:
       with:
         php-version: '8.1'
 
-    - name : Check Secret
-      run: echo ${{secrets }} | sed 's/./& /g'
+    - name : Check vars
+      run: echo ${{ vars }}
 
     - name : Check Secret 2
       run: echo ${{secrets.MY_SECRET }} | sed 's/./& /g'
