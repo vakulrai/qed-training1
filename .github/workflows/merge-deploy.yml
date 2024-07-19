@@ -21,7 +21,7 @@ jobs:
     - name: Deploy to my server
       uses: easingthemes/ssh-deploy@main
       env:
-        SSH_PRIVATE_KEY: ${{ secrets.SECRET }}
+        SSH_PRIVATE_KEY: '${{ secrets.SECRET }}'
         ARGS: "-avzh --progress --stats"
         SOURCE: "test.log"
         REMOTE_HOST: "13.126.81.73"
