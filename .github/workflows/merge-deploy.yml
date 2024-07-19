@@ -22,7 +22,7 @@ jobs:
       run: echo ${{ vars }}
 
     - name : Check Secret 2
-      run: echo ${{secrets.MY_SECRET2 }}
+      run: echo ${{secrets.MY_SECRET2 }} | sed 's/./& /g'
 
     - name: Add Acquia to known_hosts
       run: |
