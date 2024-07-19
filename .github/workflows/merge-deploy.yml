@@ -11,6 +11,7 @@ jobs:
     environment: TEST
     env:
       Greeting: ${{ secrets.MY_SECRET2 }}
+      Greetings: ${{ secrets.PVT_KEY }}
 
     steps:
     - uses: actions/checkout@v3
