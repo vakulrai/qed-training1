@@ -21,12 +21,6 @@ jobs:
       with:
         php-version: '8.1'
 
-    - name : Check vars
-      run: echo ${{ secrets }}
-
-    - name : Check Secret 2
-      run: echo ${{secrets.MY_SECRET2 }} | sed 's/./& /g'
-
     - name: Add Acquia to known_hosts
       run: |
         mkdir -p ~/.ssh
