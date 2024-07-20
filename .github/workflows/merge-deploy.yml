@@ -21,10 +21,12 @@ jobs:
       with:
         php-version: '8.1'
 
-    - name: Add Acquia to known_hosts
+    - name: Install SSH keys
       run: |
+        install -m 600 -D /dev/null ~/.ssh/id_rsa
         mkdir -p ~/.ssh
-        ssh-keyscan 13.126.81.73 >> ~/.ssh/known_hosts
+        echo "${{ secrets.MY_SECRET2 }}" > ~/.ssh/id_rsa
+        ssh-keyscan -H 13.126.81.73 >> ~/.ssh/known_hosts
 
     # Deploy
     - name: Deploy to my server
