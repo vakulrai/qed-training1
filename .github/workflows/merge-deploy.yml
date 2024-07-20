@@ -30,7 +30,7 @@ jobs:
         
     - name: Connect and deploy to Acquia
       run: |
-          ssh 13.126.81.73 "cd /var/www/html/unicef-raf/ && pwd"
+          ssh 13.126.81.73 -vvv "cd /var/www/html/unicef-raf/ && pwd"
 
     # # Deploy
     # - name: Deploy to my server
