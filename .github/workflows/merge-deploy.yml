@@ -28,9 +28,9 @@ jobs:
         SSH_PRIVATE_KEY: ${{ secrets.MY_SECRET2 }}
         ARGS: "-vvv"
         SOURCE: "test.log"
-        REMOTE_HOST: 13.126.81.73
-        REMOTE_USER: ubuntu
-        TARGET: '/var/www/html/unicef-raf/'
+        REMOTE_HOST: ${{ secrets.MY_HOST }}
+        REMOTE_USER: ${{ secrets.MY_USER }}
+        TARGET: ${{ secrets.MY_TARGET_FOLDER }}
         EXCLUDE: "/**/node_modules/"
         SCRIPT_BEFORE: |
           whoami
