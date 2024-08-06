@@ -2,3 +2,9 @@ services:
   training_caching.manager:
     class: Drupal\training_caching\Services\TrainingDrupalApiManager
     arguments: ['@config.factory', '@entity_type.bundle.info', '@entity_display.repository', '@logger.factory', '@entity_type.manager']
+
+  cache_context.preferred_user_category:
+    class: Drupal\training_caching\Cache\Context\PreferredUserCategoryCacheContext
+    arguments: ['@current_user']
+    tags:
+      - { name: cache.context }
