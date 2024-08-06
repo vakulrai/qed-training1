@@ -15,17 +15,17 @@ use Drupal\training_caching\Services\TrainingDrupalApiManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides a Caching block with cache tags.
+ * Provides a Caching block with cache contexts.
  *
  * @Block(
- *  id = "training_caching_ex1",
- *  admin_label = @Translation("Cache tags"),
+ *  id = "training_caching_ex2",
+ *  admin_label = @Translation("Cache context"),
  *  context_definitions = {
  *    "node" = @ContextDefinition("entity:node", label = @Translation("Node"))
  *  }
  * )
  */
-class TrainingCaching extends BlockBase implements ContainerFactoryPluginInterface {
+class TrainingCachingContexts extends BlockBase implements ContainerFactoryPluginInterface {
 
  /**
    * Drupal\Core\Entity\EntityTypeManagerInterface definition.
@@ -79,36 +79,16 @@ class TrainingCaching extends BlockBase implements ContainerFactoryPluginInterfa
    */
   public function build() {
     $node = $this->getContextValue('node');
-    $node_list = $this->trainingDrupalApiManager->getTopNNodes(NULL, 3);
+    $node_list = $this->trainingDrupalApiManager->getTopNNodes(NULL, 3, "DESC");
     $content = [
       '#theme' => 'item_list',
       '#list_type' => 'ul',
-      '#title' => 'Demonstrating cache tags: Top 3 nodes',
+      '#title' => 'Demonstrating cache context: Top 3 nodes',
       '#items' => $node_list,
       '#cache' => [
-        'contexts' => ['url'],
+        'contexts' => ['url.query_args:nodes'],
       ],
     ]; 
     return $content;
   }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getCacheTags() {
-    $node = $this->getContextValue('node');
-    $node_list = $this->trainingDrupalApiManager->getTopNNodes(NULL, 3);
-    $list = [];
-    $cache_tags = $node->getCacheTags();
-    if ($node_list) {
-      foreach ($node_list as $entity_id => $entity_title) {
-        $cache_tags[] = "node:" . $entity_id;
-      }
-    }
-    return Cache::mergeTags(
-      parent::getCacheTags(),
-      $cache_tags
-    );
-  }
-
 }
