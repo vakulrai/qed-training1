@@ -88,7 +88,7 @@ class TrainingDrupalApiManager {
    * @param integer $count
    *   The range for the query.
    */
-  public function getTopNNodes(string $bundle = NULL, int $count = 3): array {
+  public function getTopNNodes(string $bundle = NULL, int $count = 3 , $sort_type = "DESC"): array {
     $entities = [];
     $storage = $this->entityTypeManager->getStorage('node');
     $query_result = $storage->getQuery();
@@ -96,7 +96,7 @@ class TrainingDrupalApiManager {
     if ($bundle) {
       $query_result->condition('bundle', $bundle);
     }
-    $query_result->sort('changed','DESC');
+    $query_result->sort('changed', $sort_type);
     $query_result->range(0, $count);
     $entities = $query_result->execute();
     if ($entities) {
@@ -111,7 +111,7 @@ class TrainingDrupalApiManager {
    * Helper method to invalidate cache of top N nodes.
    */
   public function invalidateCacheofTopNNodes(): bool {
-    $node_list = $this->trainingDrupalApiManager->getTopNNodes(NULL, 3);
+    $node_list = $this->getTopNNodes(NULL, 3);
     $cache_tags = [];
     if ($node_list) {
       foreach ($node_list as $entity_id => $entity_title) {

@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Contains training_caching.module.
+ */
+
+use Drupal\Core\Cache\Cache;
+use Drupal\Core\Messenger\Messenger;
+use Drupal\Core\Entity\ContentEntityInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_presave() for node entities.
+ */
+function training_caching_node_presave(ContentEntityInterface $entity) {
+  \Drupal::service('training_caching.manager')->invalidateCacheofTopNNodes();
+}
