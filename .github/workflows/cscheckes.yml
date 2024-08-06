@@ -1,9 +1,6 @@
 name: PHPCS checks
 
-on:
-  pull_request:
-    branches:
-      - '*'
+on: [pull_request]
 
 jobs:
   build:
@@ -13,9 +10,13 @@ jobs:
       pull-requests: write
     steps:
       # This step checks out a copy of your repository.
-      - uses: actions/checkout@v3
-      - uses: sshnaidm/gpt-code-review-action
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: AI Code Reviewer
+        uses: sshnaidm/gpt-code-review-action@v2.0
         with:
+          github-token: ${{ secrets.DEV_GIHUB_TOKEN }} # The GITHUB_TOKEN is there by default so you just need to keep it like it is and not necessarily need to add it as secret as it will throw an error. [More Details](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#about-the-github_token-secret)
           openai-key: ${{ secrets.OPENAI_API_KEY }}
-          # Post comment with text even if step failed
-          post-if-error: 'true'
+          model: "gpt-3.5-turbo" # Optional: defaults to "gpt-4"
+          # exclude: "**/*.json, **/*.md" # Optional: exclude patterns separated by commas
