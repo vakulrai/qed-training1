@@ -19,7 +19,11 @@
         "composer/installers": "^2.0",
         "drupal/core-composer-scaffold": "10.2.7",
         "drupal/core-project-message": "10.2.7",
-        "drupal/core-recommended": "10.2.7"
+        "drupal/core-recommended": "10.2.7",
+        "drupal/purge": "3.6",
+        "drupal/purge_purger_http": "^1.2",
+        "drupal/token": "^1.15",
+        "drupal/varnish_purge": "^2.2"
     },
     "conflict": {
         "drupal/drupal": "*"
