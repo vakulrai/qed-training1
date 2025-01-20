@@ -1,0 +1,19 @@
+{# some/path/in/your/code/base/my-card.stories.twig #}
+{% stories simple_sdc_component with { title: 'Components/Trainig/Button' } %}
+
+  {% story simple_sdc_component with {
+    name: '1. Default',
+    args: { text: 'I am a header!!', body: 'Learn more', iconType: 'power' }
+  } %}
+    {# Write any Twig for the "default" story. The `args` above will be made #}
+    {# available as variables for the template 👇 #}
+    {% include "sdc_components:simple_sdc_component" with 
+      {
+        text,
+        body,
+        iconType,
+      } 
+    %}
+  {% endstory %}
+
+{% endstories %}

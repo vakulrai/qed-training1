@@ -13,6 +13,7 @@ local.blt.yml
 .ddev/commands/
 .ddev/docker-compose.phpmyadmin-norouter.yaml
 .ddev/docker-compose.phpmyadmin.yaml
+node_modules/
 
 # Ignore drupal core.
 docroot/core
@@ -149,3 +150,5 @@ drush/sites/.checksums
 #Exclude ignoring zip and gz files in plugins dir.
 !plugins/**/*.zip
 !plugins/**/*.gz
+
+*storybook.log
