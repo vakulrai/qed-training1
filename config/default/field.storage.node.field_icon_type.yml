@@ -1,0 +1,30 @@
+uuid: c244bd68-80e1-48a3-8a5d-79d2cddd7b84
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_icon_type
+field_name: field_icon_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: power
+      label: power
+    -
+      value: external
+      label: external
+    -
+      value: like
+      label: like
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
