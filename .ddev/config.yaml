@@ -1,13 +1,11 @@
 name: qed-training1
-type: drupal9 
+type: drupal10
 docroot: docroot
 php_version: "8.3"
 webserver_type: nginx-fpm
 xdebug_enabled: false
-additional_hostnames: 
-  - qed-training.com
-additional_fqdns: 
-  - qed-training.com
+additional_hostnames: []
+additional_fqdns: []
 database:
     type: mariadb
     version: "10.11"
@@ -28,7 +26,7 @@ corepack_enable: false
 
 # docroot: <relative_path> # Relative path to the directory containing index.php.
 
-# php_version: "8.2"  # PHP version to use, "5.6", "7.0", "7.1", "7.2", "7.3", "7.4", "8.0", "8.1", "8.2", "8.3"
+# php_version: "8.2"  # PHP version to use, "5.6", "7.0", "7.1", "7.2", "7.3", "7.4", "8.0", "8.1", "8.2", "8.3", "8.4"
 
 # You can explicitly specify the webimage but this
 # is not recommended, as the images are often closely tied to DDEV's' behavior,
@@ -43,8 +41,8 @@ corepack_enable: false
 #   MySQL versions can be 5.5-8.0.
 #   PostgreSQL versions can be 9-16.
 
-router_http_port: 82  # Port to be used for http (defaults to global configuration, usually 80)
-router_https_port: 442 # Port for https (defaults to global configuration, usually 443)
+# router_http_port: <port>  # Port to be used for http (defaults to global configuration, usually 80)
+# router_https_port: <port> # Port for https (defaults to global configuration, usually 443)
 
 # xdebug_enabled: false  # Set to true to enable Xdebug and "ddev start" or "ddev restart"
 # Note that for most people the commands
@@ -82,12 +80,10 @@ router_https_port: 442 # Port for https (defaults to global configuration, usual
 
 # nodejs_version: "20"
 # change from the default system Node.js version to any other version.
-# Numeric version numbers can be complete (i.e. 18.15.0) or
-# incomplete (18, 17.2, 16). 'lts' and 'latest' can be used as well along with
-# other named releases.
-# see https://www.npmjs.com/package/n#specifying-nodejs-versions
-# Note that you can continue using 'ddev nvm' or nvm inside the web container
-# to change the project's installed node version if you need to.
+# See https://ddev.readthedocs.io/en/stable/users/configuration/config/#nodejs_version for more information
+# and https://www.npmjs.com/package/n#specifying-nodejs-versions for the full documentation,
+# Note that using of 'ddev nvm' is discouraged because "nodejs_version" is much easier to use,
+# can specify any version, and is more robust than using 'nvm'.
 
 # corepack_enable: false
 # Change to 'true' to 'corepack enable' and gain access to latest versions of yarn/pnpm
@@ -191,7 +187,7 @@ router_https_port: 442 # Port for https (defaults to global configuration, usual
 # instead of editing /etc/hosts
 # Defaults to true
 
-# project_tld: "localhost"
+# project_tld: ddev.site
 # The top-level domain used for project URLs
 # The default "ddev.site" allows DNS lookup via a wildcard
 # If you prefer you can change this to "ddev.local" to preserve
