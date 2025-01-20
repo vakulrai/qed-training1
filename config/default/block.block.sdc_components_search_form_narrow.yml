@@ -1,0 +1,23 @@
+uuid: 200e2356-f80a-4493-8dbb-397d68ec7691
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - sdc_components
+_core:
+  default_config_hash: yEBET0cqDbk8dkWzaJw-8CKft0961VBflsISoSR6Lj8
+id: sdc_components_search_form_narrow
+theme: sdc_components
+region: primary_menu
+weight: -4
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (narrow)'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }
