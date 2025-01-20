@@ -1,15 +1,15 @@
-uuid: 11ad8838-31ec-4d26-9868-b0bd3d652686
+uuid: 200e2356-f80a-4493-8dbb-397d68ec7691
 langcode: en
 status: true
 dependencies:
   module:
     - search
   theme:
-    - sdc
+    - sdc_components
 _core:
   default_config_hash: yEBET0cqDbk8dkWzaJw-8CKft0961VBflsISoSR6Lj8
-id: sdc_search_form_narrow
-theme: sdc
+id: sdc_components_search_form_narrow
+theme: sdc_components
 region: primary_menu
 weight: -4
 provider: null

@@ -1,4 +1,4 @@
-uuid: 0aa3de3d-ad85-43de-80ea-be1c4c9c7906
+uuid: 23e0e388-e308-42ca-a13d-80b0a74a450a
 langcode: en
 status: true
 dependencies:
@@ -7,11 +7,11 @@ dependencies:
   module:
     - system
   theme:
-    - sdc
+    - sdc_components
 _core:
   default_config_hash: KWAiziL39uEzmOJEql_wbUP2RtqGceL3WM2CfxhMelE
-id: sdc_main_menu
-theme: sdc
+id: sdc_components_main_menu
+theme: sdc_components
 region: primary_menu
 weight: 0
 provider: null

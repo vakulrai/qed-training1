@@ -1,15 +1,15 @@
-uuid: 366905d8-b75a-4bd9-b39d-385efaadded8
+uuid: 370ab7c1-fc17-4da7-8beb-2f29947c3c5e
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - sdc
+    - sdc_components
 _core:
   default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
-id: sdc_breadcrumbs
-theme: sdc
+id: sdc_components_breadcrumbs
+theme: sdc_components
 region: breadcrumb
 weight: 0
 provider: null

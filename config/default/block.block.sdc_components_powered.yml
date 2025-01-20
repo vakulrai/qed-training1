@@ -1,15 +1,15 @@
-uuid: d31aa6fc-8af7-4caf-89a6-1b1032180ed9
+uuid: 9a562cf3-52dc-4ad9-9070-1486630c127d
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - sdc
+    - sdc_components
 _core:
   default_config_hash: eYL19CLDyinGTWYQfBD1DswWzglEotE_kHnHx3AxTXM
-id: sdc_powered
-theme: sdc
+id: sdc_components_powered
+theme: sdc_components
 region: header
 weight: 0
 provider: null
