@@ -1,0 +1,7 @@
+name: 'Ai Agent for Content'
+type: module
+description: 'Ai Agent to generate content'
+package: Custom
+core_version_requirement: ^10 || ^11
+dependencies:
+  - ai_agents:ai_agents

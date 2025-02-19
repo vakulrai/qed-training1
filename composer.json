@@ -17,6 +17,7 @@
     "require": {
         "acquia/blt": "^13.7",
         "composer/installers": "^2.0",
+        "drupal/ai_provider_openai": "^1.0",
         "drupal/components": "^3.1",
         "drupal/core-composer-scaffold": "10.4.0",
         "drupal/core-project-message": "10.4.0",
@@ -26,7 +27,8 @@
         "drupal/storybook": "^1.0",
         "drupal/token": "^1.15",
         "drupal/varbase_components": "^2.0",
-        "drupal/varnish_purge": "^2.2"
+        "drupal/varnish_purge": "^2.2",
+        "masterminds/html5": "^2.9"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -35,12 +37,13 @@
     "prefer-stable": true,
     "config": {
         "allow-plugins": {
+            "acquia/blt": true,
             "composer/installers": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
-            "phpstan/extension-installer": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "acquia/blt": true
+            "php-http/discovery": true,
+            "phpstan/extension-installer": true
         },
         "sort-packages": true
     },

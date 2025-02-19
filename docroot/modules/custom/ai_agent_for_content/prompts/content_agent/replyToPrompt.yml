@@ -1,0 +1,20 @@
+preferred_model: gpt-4o
+preferred_llm: openai
+is_triage: false
+prompt:
+  introduction: >
+    You can answer with multiple objects if needed.
+  possible_actions:
+    create_node: They are trying to create one or many node.
+    edit_node: They are trying to edit one or many existing nodes.
+    edit_node_with_route_context: They are trying to get the node id from route context.
+    exported_entity_list: They are trying to get the entity list as json or xml.
+    fail: It failed due to missing information or being ambivalent.
+  formats:
+    - action: action id from list
+      information: Either for suggestions, information or dependent information. Not needed on fail.
+      fail_reason: The message to show if the action is fail.
+      readable_name: The readable name of the vocabulary or taxonomy term the want to create/edit/delete.
+      data_name: The machine name of the node they want to create/edit/delete or manipulate node on. Not needed on fail or information. The machine name of the node they want to get information about.
+      published: If the node should be published. Just true or false. Default to true. Just needed for node operations.
+      node_id: The integer value of the node.
