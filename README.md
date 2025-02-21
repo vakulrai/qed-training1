@@ -6,8 +6,9 @@
 
 **Configured Varnish configs:**
 - Followed Blogs : https://www.varnish-software.com/developers/tutorials/configuring-varnish-drupal/
-I was able to configure memcache on my drupal + ddev instance: 
 
+  
+**I was able to configure memcache on my drupal + ddev instance: **
 - to test it i have used : ddev add-on get ddev/ddev-memcached
 - Used composer require drupal/memcache and enabled
 - Used the below settings in my settings.php
@@ -17,6 +18,10 @@ I was able to configure memcache on my drupal + ddev instance:
 
 	// Use Memcache as default backend for cache bins
 	$settings['cache']['default'] = 'cache.backend.memcache';
+
+**screenshots of locally configured memcache:**
+![Screenshot from 2025-02-21 19-06-30](https://github.com/user-attachments/assets/1b418f4b-2a70-4a91-9b43-7addaf428292)
+![Screenshot from 2025-02-21 19-14-45](https://github.com/user-attachments/assets/ac39e613-77ef-438e-b976-59c49a5c05bb)
 
 
 - Ran below commands to vrify the cache backend bin is storing data: 
