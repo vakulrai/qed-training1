@@ -86,7 +86,7 @@ class TrainingCachingContexts extends BlockBase implements ContainerFactoryPlugi
       '#title' => 'Demonstrating cache context: Top 3 nodes',
       '#items' => $node_list,
       '#cache' => [
-        'contexts' => ['url.query_args:nodes'],
+        'contexts' => ['user'],
       ],
     ]; 
     return $content;
