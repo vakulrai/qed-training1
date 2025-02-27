@@ -22,12 +22,12 @@ third_party_settings:
   sdc_display:
     enabled: true
     component:
-      machine_name: 'sdc:simple_sdc_component'
+      machine_name: 'sdc_components:simple_sdc_component'
       show_deprecated: null
     mappings:
       static:
         props:
-          text: dss
+          text: test
           iconType: power
           body: ''
       dynamic:

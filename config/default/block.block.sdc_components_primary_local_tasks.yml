@@ -1,0 +1,22 @@
+uuid: 229760cf-fab1-4acf-a7ff-fb0614164512
+langcode: en
+status: true
+dependencies:
+  theme:
+    - sdc_components
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: sdc_components_primary_local_tasks
+theme: sdc_components
+region: header
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: 183ce068-579d-47d5-811d-dda4f70a31c7
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - sdc_components
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: sdc_components_content
+theme: sdc_components
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

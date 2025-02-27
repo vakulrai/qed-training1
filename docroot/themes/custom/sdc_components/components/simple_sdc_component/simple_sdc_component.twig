@@ -1,0 +1,7 @@
+{% set iconType = iconType ? iconType|striptags|raw : '' %}
+<h1>{{ text }}</h1>
+<div class="body-text body-text-{{iconType}}">{{ body }}</div>
+<button class="sdc-button sdc-button-{{iconType}}">
+  {{ text }}
+  {{ include("@sdc_components/components/simple_sdc_component/icons/#{iconType}.svg") }}
+</button>

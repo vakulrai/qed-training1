@@ -1,0 +1,25 @@
+uuid: bad8d15b-6c19-4922-bba7-42e55bd0a5e9
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - sdc_components
+_core:
+  default_config_hash: n_nlgjggHVfQt2H__zvLOKB2YtjPDbQ5tHijF9LE1aM
+id: sdc_components_site_branding
+theme: sdc_components
+region: header
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: false
+visibility: {  }
