@@ -41,3 +41,7 @@ Varnish headers and testing:
 - 
   ![Purge-Drush-Site-Install](https://github.com/user-attachments/assets/a5b3c73d-c58c-4f4e-be8b-24390e072fcd)
 
+  Exercise:
+
+  - Test with multiple node updates chekc for title.
+
