@@ -85,9 +85,6 @@ class TrainingCaching extends BlockBase implements ContainerFactoryPluginInterfa
       '#list_type' => 'ul',
       '#title' => 'Demonstrating cache tags: Top 3 nodes',
       '#items' => $node_list,
-      '#cache' => [
-        'contexts' => ['url'],
-      ],
     ]; 
     return $content;
   }
