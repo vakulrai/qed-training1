@@ -13,6 +13,40 @@ use_dns_when_possible: true
 composer_version: "2"
 web_environment: []
 corepack_enable: false
+router_http_port: 80  # Port to be used for http (defaults to global configuration, usually 80)
+router_https_port: 443
+nodejs_version: "18"
+webimage_extra_packages:
+  - pkg-config
+  - libpixman-1-dev
+  - libcairo2-dev
+  - libpango1.0-dev
+  - make
+web_extra_exposed_ports:
+  - name: storybook
+    container_port: 6006
+    http_port: 6007
+    https_port: 6006
+web_extra_daemons:
+  - name: node.js
+    command: "tail -F package.json > /dev/null"
+    directory: /var/www/html/docroot/themes/custom/sdc_components
+hooks:
+  post-start:
+    - exec: echo '================================================================================='
+    - exec: echo '                                  NOTICE'
+    - exec: echo '================================================================================='
+    - exec: echo 'The node.js container is ready. You can start storybook by typing:'
+    - exec: echo 'ddev yarn storybook'
+    - exec: echo
+    - exec: echo 'By default it will be available at https://change-me.ddev.site:6006'
+    - exec: echo "Use ddev describe to confirm if this doesn't work."
+    - exec: echo 'Check the status of startup by running "ddev logs --follow --time"'
+    - exec: echo '================================================================================='
+
+###############################################################################
+# End of customizations
+###############################################################################
 
 # Key features of DDEV's config.yaml:
 
