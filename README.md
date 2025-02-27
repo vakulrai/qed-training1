@@ -1,14 +1,14 @@
-**Varnish Variation with a cache tags + Cache contexts**
+# **Varnish Variation with a cache tags + Cache contexts**
  - The content block is similar and displaying the content in Descending order
  - Block 1 is controlled by cache tags and ,Block 2 is handling Cache contexts
 ![Amet-Drush-Site-Install](https://github.com/user-attachments/assets/7de67538-1505-4c87-9091-19b784bc6c96)
 
 
-**Configured Varnish configs:**
+#**Configured Varnish configs:**
 - Followed Blogs : https://www.varnish-software.com/developers/tutorials/configuring-varnish-drupal/
 
   
-**I was able to configure memcache on my drupal + ddev instance: **
+# **I was able to configure memcache on my drupal + ddev instance: **
 - to test it i have used : ddev add-on get ddev/ddev-memcached
 - Used composer require drupal/memcache and enabled
 - Used the below settings in my settings.php
@@ -24,7 +24,7 @@ Varnish headers and testing:
 
 
 
-**screenshots of locally configured memcache:**
+# **screenshots of locally configured memcache:**
 ![Screenshot from 2025-02-21 19-06-30](https://github.com/user-attachments/assets/1b418f4b-2a70-4a91-9b43-7addaf428292)
 ![Screenshot from 2025-02-21 19-14-45](https://github.com/user-attachments/assets/ac39e613-77ef-438e-b976-59c49a5c05bb)
 
