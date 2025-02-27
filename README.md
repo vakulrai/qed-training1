@@ -19,6 +19,11 @@
 	// Use Memcache as default backend for cache bins
 	$settings['cache']['default'] = 'cache.backend.memcache';
 
+Varnish headers and testing:
+![Screenshot from 2025-02-27 13-06-33](https://github.com/user-attachments/assets/f94226d6-92a7-47c1-85ba-fa647611a4ae)
+
+
+
 **screenshots of locally configured memcache:**
 ![Screenshot from 2025-02-21 19-06-30](https://github.com/user-attachments/assets/1b418f4b-2a70-4a91-9b43-7addaf428292)
 ![Screenshot from 2025-02-21 19-14-45](https://github.com/user-attachments/assets/ac39e613-77ef-438e-b976-59c49a5c05bb)
