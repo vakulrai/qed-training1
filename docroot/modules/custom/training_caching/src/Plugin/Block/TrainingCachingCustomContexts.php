@@ -71,6 +71,9 @@ class TrainingCachingCustomContexts extends BlockBase implements ContainerFactor
     if (empty($preferred_category_tid)) {
       return [
         '#markup' => $this->t('No preferred category set.'),
+        '#cache' => [
+          'contexts' => ['preferred_user_category'],
+        ],
       ];
     }
 
@@ -96,7 +99,7 @@ class TrainingCachingCustomContexts extends BlockBase implements ContainerFactor
         '#theme' => 'item_list',
         '#items' => $titles,
         '#cache' => [
-          'contexts' => ['user', 'preferred_user_category'],
+          'contexts' => ['preferred_user_category'],
         ],
       ];      
   }
