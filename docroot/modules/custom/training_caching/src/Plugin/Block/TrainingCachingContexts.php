@@ -11,6 +11,7 @@ use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\training_caching\Services\TrainingDrupalApiManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -42,6 +43,13 @@ class TrainingCachingContexts extends BlockBase implements ContainerFactoryPlugi
   protected $trainingDrupalApiManager;
 
   /**
+   * The current user service.
+   *
+   * @var \Drupal\Core\Session\AccountProxyInterface
+   */
+  protected $currentUser;
+
+  /**
    * Construct.
    *
    * @param array $configuration
@@ -55,10 +63,11 @@ class TrainingCachingContexts extends BlockBase implements ContainerFactoryPlugi
    * @param Drupal\training_caching\Services\TrainingDrupalApiManager $api_manager
    *   Drupal\training_caching\Services\TrainingDrupalApiManager.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, TrainingDrupalApiManager $api_manager) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entity_type_manager, TrainingDrupalApiManager $api_manager, AccountProxyInterface $current_user) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityTypeManager = $entity_type_manager;
     $this->trainingDrupalApiManager = $api_manager;
+    $this->currentUser = $current_user;
   }
 
   /**
@@ -71,6 +80,7 @@ class TrainingCachingContexts extends BlockBase implements ContainerFactoryPlugi
       $plugin_definition,
       $container->get('entity_type.manager'),
       $container->get('training_caching.manager'),
+      $container->get('current_user'),
     );
   }
 
@@ -78,17 +88,21 @@ class TrainingCachingContexts extends BlockBase implements ContainerFactoryPlugi
    * {@inheritdoc}
    */
   public function build() {
-    $node = $this->getContextValue('node');
-    $node_list = $this->trainingDrupalApiManager->getTopNNodes(NULL, 3, "DESC");
-    $content = [
-      '#theme' => 'item_list',
-      '#list_type' => 'ul',
-      '#title' => 'Demonstrating cache context: Top 3 nodes',
-      '#items' => $node_list,
+    $roles = $this->currentUser->getRoles();
+
+    if (in_array('administrator', $roles)) {
+      $message = "Hello, Admin!";
+    } elseif (in_array('content_editor', $roles)) {
+      $message = "Welcome back, valued member!";
+    } else {
+      $message = "Welcome, Guest!";
+    }
+
+    return [
+      '#markup' => $this->t($message),
       '#cache' => [
-        'contexts' => ['user'],
+        'contexts' => ['user.roles'], // This ensures cache varies by user role.
       ],
-    ]; 
-    return $content;
+    ];
   }
 }
