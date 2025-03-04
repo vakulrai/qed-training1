@@ -22,7 +22,9 @@
 Varnish headers and testing:
 ![Screenshot from 2025-02-27 13-06-33](https://github.com/user-attachments/assets/f94226d6-92a7-47c1-85ba-fa647611a4ae)
 
-
+# screenshots of Custom cache context:
+![Screenshot from 2025-03-04 13-53-41](https://github.com/user-attachments/assets/caf83d1a-07b6-4a0d-8d48-424e7bc28d10)
+![Screenshot from 2025-03-04 13-53-44](https://github.com/user-attachments/assets/873c7d63-a9ab-418d-aada-b97ee80a7c15)
 
 # screenshots of locally configured memcache:
 ![Screenshot from 2025-02-21 19-06-30](https://github.com/user-attachments/assets/1b418f4b-2a70-4a91-9b43-7addaf428292)
