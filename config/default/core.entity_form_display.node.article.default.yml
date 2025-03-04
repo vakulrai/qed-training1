@@ -3,11 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.article.ai_automator_status
     - field.field.node.article.body
     - field.field.node.article.comment
     - field.field.node.article.field_icon_type
     - field.field.node.article.field_image
     - field.field.node.article.field_tags
+    - field.field.node.article.field_test
     - image.style.thumbnail
     - node.type.article
   module:
@@ -68,6 +70,14 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_test:
+    type: string_textfield
+    weight: 122
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   path:
     type: path
     weight: 30
@@ -113,4 +123,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  ai_automator_status: true

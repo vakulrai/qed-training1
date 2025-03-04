@@ -80,8 +80,8 @@ class TrainingCachingCustomContexts extends BlockBase implements ContainerFactor
     // Get Nodes which have Preferred Category.
     $query = \Drupal::entityQuery('node')
       ->condition('status', 1)
-      ->condition('type', 'article')
-      ->condition('field_category.target_id', $preferred_category_tid)
+      ->condition('type', 'caching_content')
+      ->condition('field_category', $preferred_category_tid)
       ->sort('created', 'DESC')
       ->accessCheck(FALSE)
       ->range(0, 5);

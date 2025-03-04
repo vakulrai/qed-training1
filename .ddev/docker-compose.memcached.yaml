@@ -8,21 +8,21 @@
 # 4. Optional: adjust the 'command' line below to change CLI flags sent to
 #    memcached.
 
-services:
-  memcached:
-    container_name: ddev-${DDEV_SITENAME}-memcached
-    image: memcached:1.6
-    restart: "no"
-    # memcached is available at this port inside the container.
-    expose:
-      - 11211
-    # These labels ensure this service is discoverable by ddev.
-    labels:
-      com.ddev.site-name: ${DDEV_SITENAME}
-      com.ddev.approot: $DDEV_APPROOT
+# services:
+#   memcached:
+#     container_name: ddev-${DDEV_SITENAME}-memcached
+#     image: memcached:1.6
+#     restart: "no"
+#     # memcached is available at this port inside the container.
+#     expose:
+#       - 11211
+#     # These labels ensure this service is discoverable by ddev.
+#     labels:
+#       com.ddev.site-name: ${DDEV_SITENAME}
+#       com.ddev.approot: $DDEV_APPROOT
 
-    # Arguments passed to the memcached binary.
-    command: ["-m", "128"]
+#     # Arguments passed to the memcached binary.
+#     command: ["-m", "128"]
 
-    volumes:
-    - ".:/mnt/ddev_config"
+#     volumes:
+#     - ".:/mnt/ddev_config"

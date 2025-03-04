@@ -1,0 +1,21 @@
+uuid: 34f52730-a6a8-4d06-9164-1cf322e3dcfe
+langcode: en
+status: true
+dependencies:
+  config:
+    - ai_automators.automator_chain_type.chain_1
+    - field.field.automator_chain.chain_1.field_test
+id: automator_chain.chain_1.default
+targetEntityType: automator_chain
+bundle: chain_1
+mode: default
+content:
+  field_test:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,18 @@
+uuid: 876e0d65-a0d4-401d-9610-8ea3ba86c107
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Caching content'
+type: caching_content
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

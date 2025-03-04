@@ -1,0 +1,22 @@
+uuid: 92570b06-1c58-44cb-b6ad-ea53e0d9f32c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.ai_automators.field_media_ref
+    - node.type.ai_automators
+  module:
+    - user
+id: node.ai_automators.teaser
+targetEntityType: node
+bundle: ai_automators
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_media_ref: true

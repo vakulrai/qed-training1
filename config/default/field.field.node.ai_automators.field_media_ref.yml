@@ -1,0 +1,29 @@
+uuid: a9a9e2af-cc57-4398-9fc1-e064de0e12f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_media_ref
+    - media.type.image
+    - node.type.ai_automators
+id: node.ai_automators.field_media_ref
+field_name: field_media_ref
+entity_type: node
+bundle: ai_automators
+label: 'Media Ref'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

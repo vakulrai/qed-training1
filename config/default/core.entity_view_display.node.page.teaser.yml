@@ -4,7 +4,9 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.page.ai_automator_status
     - field.field.node.page.body
+    - field.field.node.page.field_image_life
     - node.type.page
   module:
     - text
@@ -27,4 +29,6 @@ content:
   links:
     weight: 101
     region: content
-hidden: {  }
+hidden:
+  ai_automator_status: true
+  field_image_life: true

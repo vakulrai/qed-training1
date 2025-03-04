@@ -1,0 +1,10 @@
+_core:
+  default_config_hash: fl7YgLOjlmkovo0SEeKA1hldibx0fmdZ1VPUzWQVIwM
+agent_settings:
+  node_content_type_agent:
+    usage_instructions: 'Please Add a text like "Add a term Ai agent under vocabulary tags" '
+    permissions:
+      authenticated: 0
+      content_editor: 0
+      administrator: 0
+    plugin_settings: {  }

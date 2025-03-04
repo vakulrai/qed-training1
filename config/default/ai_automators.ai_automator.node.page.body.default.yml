@@ -1,0 +1,36 @@
+uuid: ba032d01-871b-4533-b076-cb47f65bf256
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.page.body
+id: node.page.body.default
+label: 'Body Default'
+rule: llm_text_with_summary
+input_mode: base
+weight: 100
+worker_type: direct
+entity_type: node
+bundle: page
+field_name: body
+edit_mode: true
+base_field: title
+prompt: "Analyse the image and provide a description using context.\r\n\r\nContext:\r\n{{ context }} "
+token: ''
+plugin_config:
+  automator_enabled: 1
+  automator_rule: llm_text_with_summary
+  automator_mode: base
+  automator_base_field: title
+  automator_prompt: "Analyse the image and provide a description using context.\r\n\r\nContext:\r\n{{ context }} "
+  automator_token: ''
+  automator_edit_mode: 1
+  automator_label: 'Body Default'
+  automator_weight: '100'
+  automator_worker_type: direct
+  automator_ai_provider: default_vision
+  automator_configuration_image_field: field_image_life
+  automator_configuration_image_style: large
+  automator_joiner: ''
+  automator_joiner_other: ''
+  automator_use_text_format: full_html

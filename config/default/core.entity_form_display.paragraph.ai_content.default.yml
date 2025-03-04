@@ -1,0 +1,36 @@
+uuid: 45f5991e-f4de-4a95-b31e-aea01993db05
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.ai_content.ai_automator_status
+    - field.field.paragraph.ai_content.field_city_name
+    - field.field.paragraph.ai_content.field_popular_destinations
+    - paragraphs.paragraphs_type.ai_content
+  module:
+    - text
+id: paragraph.ai_content.default
+targetEntityType: paragraph
+bundle: ai_content
+mode: default
+content:
+  field_city_name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_popular_destinations:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  ai_automator_status: true
+  created: true
+  status: true

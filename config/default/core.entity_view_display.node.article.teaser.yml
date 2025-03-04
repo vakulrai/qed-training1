@@ -4,11 +4,13 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.article.ai_automator_status
     - field.field.node.article.body
     - field.field.node.article.comment
     - field.field.node.article.field_icon_type
     - field.field.node.article.field_image
     - field.field.node.article.field_tags
+    - field.field.node.article.field_test
     - image.style.medium
     - node.type.article
   module:
@@ -81,4 +83,6 @@ content:
     weight: 4
     region: content
 hidden:
+  ai_automator_status: true
   comment: true
+  field_test: true

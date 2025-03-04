@@ -1,0 +1,29 @@
+uuid: 3ceaa310-4d4f-4b97-819e-505caa398e9a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_media_ref
+    - media.type.image
+    - node.type.ai_content
+id: node.ai_content.field_media_ref
+field_name: field_media_ref
+entity_type: node
+bundle: ai_content
+label: 'Media Ref'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

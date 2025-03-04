@@ -1,0 +1,9 @@
+uuid: 48796430-dc7f-4f88-b8b0-3acc379a9d73
+langcode: en
+status: true
+dependencies: {  }
+name: 'Preffered category'
+vid: preffered_category
+description: null
+weight: 0
+new_revision: false

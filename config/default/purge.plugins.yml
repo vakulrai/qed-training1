@@ -1,0 +1,18 @@
+purgers:
+  -
+    instance_id: 205e9359c5
+    plugin_id: http
+    order_index: 2
+processors:
+  -
+    plugin_id: drush_purge_invalidate
+    status: false
+  -
+    plugin_id: drush_purge_queue_work
+    status: true
+  -
+    plugin_id: cron
+    status: true
+  -
+    plugin_id: purge_ui_block_processor
+    status: true

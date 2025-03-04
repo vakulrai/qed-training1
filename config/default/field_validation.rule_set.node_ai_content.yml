@@ -1,0 +1,25 @@
+uuid: 8f582d33-bce2-4fe9-a229-8cf1c820a8a9
+langcode: en
+status: true
+dependencies: {  }
+name: node_ai_content
+label: 'node ai_content validation'
+entity_type: node
+bundle: ai_content
+field_validation_rules:
+  85c3d2f1-0c00-4bd5-9983-7c6adc35fc58:
+    id: blank_constraint_rule
+    title: Media
+    data:
+      validate_mode: direct
+      message: 'This value should be blank.'
+    weight: 1
+    uuid: 85c3d2f1-0c00-4bd5-9983-7c6adc35fc58
+    field_name: field_media_ref
+    column: target_id
+    error_message: ''
+    roles: {  }
+    condition:
+      field: ''
+      operator: ''
+      value: ''

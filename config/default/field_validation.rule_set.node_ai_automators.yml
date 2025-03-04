@@ -1,0 +1,32 @@
+uuid: a3c022a4-9f69-452e-9255-ef657f56f643
+langcode: en
+status: true
+dependencies:
+  module:
+    - ai_validations
+name: node_ai_automators
+label: 'node ai_automators validation'
+entity_type: node
+bundle: ai_automators
+field_validation_rules:
+  ef03b961-6dbb-4c6b-a42f-31a0cc4c2a76:
+    id: 'ai_image_classification constraint_rule'
+    title: img
+    data:
+      tag: NSFW
+      finder: contains
+      model: huggingface__huggingface
+      minimum: '0.8'
+      message: 'This value is not valid.'
+      validate_mode: direct
+      na: skip
+    weight: 1
+    uuid: ef03b961-6dbb-4c6b-a42f-31a0cc4c2a76
+    field_name: field_media_ref
+    column: target_id
+    error_message: ''
+    roles: {  }
+    condition:
+      field: ''
+      operator: ''
+      value: ''

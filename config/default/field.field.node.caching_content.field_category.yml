@@ -1,0 +1,29 @@
+uuid: 10ce19bd-ca8e-4a9c-b502-8168e89a27f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_category
+    - node.type.caching_content
+    - taxonomy.vocabulary.preffered_category
+id: node.caching_content.field_category
+field_name: field_category
+entity_type: node
+bundle: caching_content
+label: Category
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      preffered_category: preffered_category
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,50 @@
+_core:
+  default_config_hash: RGedRkFydKZjS0ZJ6vbtZH00KbhYVGsK-ABILHdQLyw
+prompt_logging: false
+prompt_logging_tags: ''
+default_providers:
+  chat:
+    provider_id: openai
+    model_id: gpt-4o
+  chat_with_complex_json:
+    provider_id: openai
+    model_id: gpt-4o
+  chat_with_image_vision:
+    provider_id: openai
+    model_id: gpt-4o
+  embeddings:
+    provider_id: openai
+    model_id: text-embedding-3-small
+  moderation:
+    provider_id: openai
+    model_id: omni-moderation-latest
+  speech_to_text:
+    provider_id: openai
+    model_id: whisper-1
+  text_to_image:
+    provider_id: openai
+    model_id: dall-e-3
+  text_to_speech:
+    provider_id: openai
+    model_id: tts-1-hd
+models:
+  huggingface:
+    image_classification:
+      huggingface:
+        operation_type: image_classification
+        model_id: huggingface
+        label: Huggingface
+        huggingface_endpoint: Falconsai/nsfw_image_detection
+        provider: huggingface
+      pokemon_classifier:
+        operation_type: image_classification
+        model_id: pokemon_classifier
+        label: 'Cartoon face rec.'
+        huggingface_endpoint: umm-maybe/AI-image-detector
+        provider: huggingface
+      VIT:
+        operation_type: image_classification
+        model_id: VIT
+        label: VIT
+        huggingface_endpoint: google/vit-base-patch16-224
+        provider: huggingface

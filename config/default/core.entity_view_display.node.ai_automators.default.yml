@@ -1,0 +1,28 @@
+uuid: 7f231383-5729-40b5-84f5-db02d044e27a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.ai_automators.field_media_ref
+    - node.type.ai_automators
+  module:
+    - user
+id: node.ai_automators.default
+targetEntityType: node
+bundle: ai_automators
+mode: default
+content:
+  field_media_ref:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

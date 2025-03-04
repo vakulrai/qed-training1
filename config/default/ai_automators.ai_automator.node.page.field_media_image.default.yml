@@ -1,0 +1,38 @@
+uuid: 4e00f433-7157-4b74-902b-31fc19919c6f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.page.field_media_image
+id: node.page.field_media_image.default
+label: 'Media Image Default'
+rule: llm_media_image_generation
+input_mode: base
+weight: 100
+worker_type: direct
+entity_type: node
+bundle: page
+field_name: field_media_image
+edit_mode: true
+base_field: title
+prompt: ''
+token: ''
+plugin_config:
+  automator_enabled: 1
+  automator_rule: llm_media_image_generation
+  automator_mode: base
+  automator_base_field: title
+  automator_prompt: ''
+  automator_token: ''
+  automator_edit_mode: 1
+  automator_label: 'Media Image Default'
+  automator_weight: '100'
+  automator_worker_type: direct
+  automator_ai_provider: default
+  automator_ai_model: dall-e-3
+  automator_configuration_n: '1'
+  automator_configuration_response_format: url
+  automator_configuration_size: 1024x1024
+  automator_configuration_quality: standard
+  automator_configuration_style: vivid
+  automator_llm_media_type: image

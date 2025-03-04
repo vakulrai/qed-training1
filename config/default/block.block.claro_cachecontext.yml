@@ -1,0 +1,30 @@
+uuid: 20362658-250a-45f0-8beb-8175b6af4ac2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - training_caching
+  theme:
+    - claro
+id: claro_cachecontext
+theme: claro
+region: content
+weight: 0
+provider: null
+plugin: training_caching_ex2
+settings:
+  id: training_caching_ex2
+  label: 'Cache context'
+  label_display: visible
+  provider: training_caching
+  context_mapping:
+    node: '@node.node_route_context:node'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      page: page

@@ -1,0 +1,34 @@
+uuid: 317dd75d-0053-4253-b015-ae8d1dd357b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.ai_content.body
+id: node.ai_content.body.default
+label: 'Body Default'
+rule: llm_simple_text_with_summary
+input_mode: base
+weight: 100
+worker_type: direct
+entity_type: node
+bundle: ai_content
+field_name: body
+edit_mode: false
+base_field: title
+prompt: ''
+token: ''
+plugin_config:
+  automator_enabled: 1
+  automator_rule: llm_simple_text_with_summary
+  automator_mode: base
+  automator_base_field: title
+  automator_prompt: ''
+  automator_token: ''
+  automator_edit_mode: 0
+  automator_label: 'Body Default'
+  automator_weight: '100'
+  automator_worker_type: direct
+  automator_ai_provider: huggingface
+  automator_code_block_type: html
+  automator_use_text_format: full_html
+  automator_ai_model: ''

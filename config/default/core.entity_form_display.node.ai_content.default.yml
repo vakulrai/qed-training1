@@ -1,0 +1,91 @@
+uuid: 66737e07-bc75-466a-8091-7d97a5bd27ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.ai_content.body
+    - field.field.node.ai_content.field_image_ref
+    - field.field.node.ai_content.field_media_ref
+    - field.field.node.ai_content.field_popular_site_link
+    - field.field.node.ai_content.field_region
+    - image.style.thumbnail
+    - node.type.ai_content
+  module:
+    - image
+    - media_library
+    - path
+id: node.ai_content.default
+targetEntityType: node
+bundle: ai_content
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_image_ref:
+    type: image_image
+    weight: 8
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_media_ref:
+    type: media_library_widget
+    weight: 7
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_popular_site_link: true
+  field_region: true

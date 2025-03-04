@@ -1,0 +1,10 @@
+uuid: 471b240c-068e-4c9e-b158-d438a445116b
+langcode: en
+status: true
+dependencies: {  }
+id: ai_content
+label: 'Ai content'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

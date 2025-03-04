@@ -1,0 +1,32 @@
+uuid: 1e373159-9d7e-4db9-abc2-0712dc5f8919
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.article.field_test
+id: node.article.field_test.default
+label: 'Test  Default'
+rule: llm_simple_string
+input_mode: base
+weight: 100
+worker_type: direct
+entity_type: node
+bundle: article
+field_name: field_test
+edit_mode: false
+base_field: revision_log
+prompt: 'Add some random text {{ context }}'
+token: ''
+plugin_config:
+  automator_enabled: 1
+  automator_rule: llm_simple_string
+  automator_mode: base
+  automator_base_field: revision_log
+  automator_prompt: 'Add some random text {{ context }}'
+  automator_token: ''
+  automator_edit_mode: 0
+  automator_label: 'Test  Default'
+  automator_weight: '100'
+  automator_worker_type: direct
+  automator_ai_provider: default_json
+  automator_code_block_type: html

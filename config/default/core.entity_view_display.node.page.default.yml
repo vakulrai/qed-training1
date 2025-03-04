@@ -3,9 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.page.ai_automator_status
     - field.field.node.page.body
+    - field.field.node.page.field_image_life
     - node.type.page
   module:
+    - image
     - text
     - user
 _core:
@@ -22,7 +25,19 @@ content:
     third_party_settings: {  }
     weight: 100
     region: content
+  field_image_life:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 104
+    region: content
   links:
     weight: 101
     region: content
-hidden: {  }
+hidden:
+  ai_automator_status: true

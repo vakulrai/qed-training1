@@ -1,0 +1,19 @@
+uuid: e5b035a0-4bda-49f5-831b-1b198e6cae5a
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+id: paragraph.field_popular_destinations
+field_name: field_popular_destinations
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,18 @@
+uuid: 25eee7ed-afa0-43d3-9a70-3dff3ab0c303
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'AI automators'
+type: ai_automators
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

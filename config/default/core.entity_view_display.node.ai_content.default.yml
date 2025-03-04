@@ -1,0 +1,54 @@
+uuid: 857c9d2a-125c-46e1-a6b1-3734f976356b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.ai_content.body
+    - field.field.node.ai_content.field_image_ref
+    - field.field.node.ai_content.field_media_ref
+    - field.field.node.ai_content.field_popular_site_link
+    - field.field.node.ai_content.field_region
+    - node.type.ai_content
+  module:
+    - link
+    - sdc_display
+    - user
+third_party_settings:
+  sdc_display:
+    enabled: false
+    component:
+      machine_name: ''
+    mappings:
+      static:
+        props: {  }
+        slots: {  }
+      dynamic:
+        props: {  }
+        slots: {  }
+id: node.ai_content.default
+targetEntityType: node
+bundle: ai_content
+mode: default
+content:
+  field_popular_site_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  field_image_ref: true
+  field_media_ref: true
+  field_region: true

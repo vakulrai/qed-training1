@@ -1,6 +1,19 @@
 _core:
   default_config_hash: 4GIX5Esnc_umpXUBj4IIocRX7Mt5fPhm4AgXfE3E56E
 module:
+  admin_toolbar: 0
+  ai: 0
+  ai_agents: 0
+  ai_agents_explorer: 0
+  ai_api_explorer: 0
+  ai_assistant_api: 0
+  ai_automators: 0
+  ai_chatbot: 0
+  ai_ckeditor: 0
+  ai_external_moderation: 0
+  ai_provider_huggingface: 0
+  ai_provider_openai: 0
+  ai_validations: 0
   announcements_feed: 0
   automated_cron: 0
   big_pipe: 0
@@ -17,16 +30,23 @@ module:
   contextual: 0
   datetime: 0
   dblog: 0
+  devel: 0
+  devel_generate: 0
   dynamic_page_cache: 0
   editor: 0
+  entity_reference_revisions: 0
   field: 0
   field_ui: 0
+  field_validation: 0
   file: 0
   filter: 0
   help: 0
   history: 0
   image: 0
+  key: 0
   link: 0
+  media: 0
+  media_library: 0
   menu_link_content: 0
   menu_ui: 0
   mysql: 0
@@ -35,6 +55,12 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
+  purge: 0
+  purge_processor_cron: 0
+  purge_purger_http: 0
+  purge_queuer_coretags: 0
+  purge_tokens: 0
+  purge_ui: 0
   sdc_display: 0
   sdc_tags: 0
   search: 0
@@ -43,11 +69,16 @@ module:
   system: 0
   taxonomy: 0
   text: 0
+  token: 0
   toolbar: 0
+  training_caching: 0
   update: 0
   user: 0
+  varnish_purge_tags: 0
+  varnish_purger: 0
   views_ui: 0
   views: 10
+  paragraphs: 11
   standard: 1000
 theme:
   olivero: 0
