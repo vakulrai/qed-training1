@@ -1,0 +1,190 @@
+{
+  "model": {
+    "id": "ai_comment_moderator",
+    "label": "AI Comment Moderator",
+    "version": "1.0.4",
+    "description": "Automatically moderates and responds to comments using AI with AJAX refresh",
+    "events": [
+      {
+        "id": "comment_inserted",
+        "plugin": "entity_insert:comment",
+        "label": "After saving a comment",
+        "configuration": {
+          "entity_type": "comment"
+        }
+      }
+    ],
+    "conditions": [
+      {
+        "id": "is_anonymous",
+        "plugin": "data_comparison",
+        "label": "Comment is anonymous",
+        "configuration": {
+          "left": "[comment:uid:target_id]",
+          "right": 0,
+          "operator": "=="
+        }
+      },
+      {
+        "id": "has_content",
+        "plugin": "data_is_empty",
+        "label": "Comment has content",
+        "configuration": {
+          "value": "[comment:comment_body:value]",
+          "negate": true
+        }
+      }
+    ],
+    "actions": [
+      {
+        "id": "call_ai_moderator",
+        "plugin": "http_request",
+        "label": "Call AI Moderation API",
+        "configuration": {
+          "method": "POST",
+          "url": "https://api.openai.com/v1/chat/completions",
+          "options": {
+            "headers": {
+              "Authorization": "Bearer YOUR_OPENAI_API_KEY",
+              "Content-Type": "application/json"
+            },
+            "json": {
+              "model": "gpt-3.5-turbo",
+              "response_format": {
+                "type": "json_object"
+              },
+              "messages": [
+                {
+                  "role": "system",
+                  "content": "Analyze this comment. Return JSON with: 'response' (string), 'approve' (boolean), and 'reason' (string). Only approve appropriate comments."
+                },
+                {
+                  "role": "user",
+                  "content": "{\"comment\":\"[comment:comment_body:value]\",\"author\":\"anonymous\"}"
+                }
+              ],
+              "temperature": 0.2
+            }
+          },
+          "result_token": "ai_response"
+        }
+      },
+      {
+        "id": "store_ai_response",
+        "plugin": "system_set_value",
+        "label": "Store AI Response",
+        "configuration": {
+          "key": "ai_decision",
+          "value": "[ai_response:choices.0.message.content]"
+        }
+      },
+      {
+        "id": "show_typing_indicator",
+        "plugin": "javascript",
+        "label": "Show Typing Indicator",
+        "configuration": {
+          "script": "document.querySelector('.comments-wrapper').insertAdjacentHTML('beforeend', '<div class=\"ai-typing\"><div class=\"typing-dots\"><span></span><span></span><span></span></div></div>');"
+        }
+      },
+      {
+        "id": "approval_check",
+        "plugin": "condition",
+        "label": "Check AI Approval",
+        "configuration": {
+          "condition": {
+            "plugin": "data_comparison",
+            "configuration": {
+              "left": "[system_value:ai_decision|json_value:approve]",
+              "right": true,
+              "operator": "=="
+            }
+          },
+          "actions": [
+            {
+              "id": "publish_comment",
+              "plugin": "entity_save",
+              "label": "Publish Original Comment",
+              "configuration": {
+                "entity_type": "comment",
+                "entity_id": "[comment:id]",
+                "data": {
+                  "status": 1
+                }
+              }
+            },
+            {
+              "id": "create_ai_reply",
+              "plugin": "entity_create",
+              "label": "Create AI Response",
+              "configuration": {
+                "entity_type": "comment",
+                "values": {
+                  "entity_id": "[comment:entity_id]",
+                  "entity_type": "[comment:entity_type]",
+                  "field_name": "[comment:field_name]",
+                  "comment_body": "[system_value:ai_decision|json_value:response]",
+                  "status": 1,
+                  "uid": 2
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "rejection_actions",
+        "plugin": "condition",
+        "label": "Handle Rejection",
+        "configuration": {
+          "condition": {
+            "plugin": "data_comparison",
+            "configuration": {
+              "left": "[system_value:ai_decision|json_value:approve]",
+              "right": false,
+              "operator": "=="
+            }
+          },
+          "actions": [
+            {
+              "id": "log_rejection",
+              "plugin": "system_log",
+              "label": "Log Rejected Comment",
+              "configuration": {
+                "message": "AI rejected comment: [system_value:ai_decision|json_value:reason]",
+                "variables": {
+                  "comment": "[comment:comment_body:value]"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "refresh_comments",
+        "plugin": "javascript",
+        "label": "Refresh Comments via AJAX",
+        "configuration": {
+          "script": "if (typeof Drupal !== 'undefined' && Drupal.behaviors.ajaxComments) { document.querySelectorAll('.ajax-comments-wrapper').forEach(wrapper => { Drupal.behaviors.ajaxComments.attach(wrapper); }); }"
+        }
+      }
+    ],
+    "flow": {
+      "comment_inserted": {
+        "conditions": ["is_anonymous", "has_content"],
+        "actions": [
+          "call_ai_moderator",
+          "store_ai_response",
+          "show_typing_indicator",
+          {
+            "delay": 2000,
+            "actions": [
+              "approval_check",
+              "rejection_actions",
+              "refresh_comments"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
